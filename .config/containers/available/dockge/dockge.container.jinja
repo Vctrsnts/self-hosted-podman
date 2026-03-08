@@ -4,6 +4,7 @@ Descripcion=Dockge
 [Container]
 Image=docker.io/louislam/dockge
 ContainerName=dockge
+PodmanArgs==--init
 
 # Persistencia
 Volume=%t/podman/podman.sock:/var/run/docker.sock:ro
@@ -18,6 +19,12 @@ Label=traefik.http.routers.dockge.rule=Host(`dockge.{{ env.FQDN }}`)
 Label=traefik.http.routers.dockge.entrypoints=websecure
 Label=traefik.http.routers.dockge.tls.certresolver=myresolver
 Label=traefik.http.routers.dockge.middlewares=seguridadHeaders@file,compresionHeaders@file
+
+# HealthCheck
+HealthInterval=60s
+HealthTimeout=30s
+HealthStartPeriod=60s
+HealthRetries=5
 
 [Service]
 Restart=unless-stopped
