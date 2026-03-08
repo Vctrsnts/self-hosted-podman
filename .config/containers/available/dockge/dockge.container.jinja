@@ -1,5 +1,5 @@
 [Unit]
-Descripcion=Dockge
+Description=Dockge
 
 [Container]
 Image=docker.io/louislam/dockge
@@ -27,7 +27,7 @@ HealthStartPeriod=60s
 HealthRetries=5
 
 [Service]
-Restart=unless-stopped
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
